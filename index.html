@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Yadav | Portfolio</title>
+
+  <style>
+    .project-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: #ff5b45;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.project-link:hover {
+    background: #e94330;
+    transform: translateY(-3px);
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #090b18;
+      color: #f5f5f7;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 88%;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #25283a;
+    }
+
+    .logo {
+      color: #ff594d;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #c7c8d0;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff594d;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 65px 0;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .tag {
+      color: #ff594d;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 100px);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -5px;
+    }
+
+    .outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px #ff594d;
+    }
+
+    .name {
+      color: #ff594d;
+      margin-top: 15px;
+    }
+
+    .description {
+      color: #aaaebb;
+      max-width: 480px;
+      line-height: 1.8;
+      margin: 28px 0;
+      font-size: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 22px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border: 1px solid #ff594d;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #ff594d;
+      color: white;
+    }
+
+    .secondary {
+      color: white;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #090b18;
+      border-color: white;
+    }
+
+    /* PROFILE CARD */
+
+    .profile-card {
+      width: 320px;
+      min-height: 390px;
+      background: linear-gradient(145deg, #1d2034, #101222);
+      border: 1px solid #35384e;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 0 60px #ff594d12;
+    }
+
+    .profile-circle {
+      width: 155px;
+      height: 155px;
+      border: 2px solid #ff594d;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #ff594d;
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 25px;
+      background: #090b18;
+    }
+
+    .profile-card h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .profile-card p {
+      color: #aaaebb;
+      font-size: 12px;
+    }
+
+    .card-label {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      color: #ff594d;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .bottom-line {
+      border-top: 1px solid #25283a;
+      padding: 20px 0;
+      color: #85889b;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    /* MOBILE RESPONSIVE */
+
+    @media (max-width: 480px) {
+    .hero {
+    flex-direction: row;
+    align-items: center;
+}
+
+      .profile-card {
+        width: 100%;
+        max-width: 380px;
+        align-self: center;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      nav ul {
+        gap: 8px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+    }
+/* BACKGROUND GLOW */
+
+body {
+  background-image:
+    radial-gradient(
+      circle at 80% 40%,
+      rgba(255, 89, 77, 0.10),
+      transparent 35%
+    );
+}
+
+/* HERO ENTRANCE ANIMATION */
+
+.hero-content {
+  animation: slideUp 1s ease both;
+}
+.profile-card {
+    width: 300px;
+    min-width: 260px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FLOATING PROFILE CARD */
+
+.profile-card {
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* GLOWING PROFILE CIRCLE */
+
+.profile-photo {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #ff594d;
+  margin-bottom: 25px;
+  box-shadow: 0 0 30px #ff594d40;
+  transition: 0.4s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px #ff594d80;
+}
+
+.profile-circle:hover {
+  box-shadow: 0 0 40px #ff594d90;
+  transform: scale(1.06);
+}
+
+/* BUTTON ANIMATION */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px #ff594d40;
+}
+
+/* NAVIGATION ANIMATION */
+
+nav a {
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff594d;
+}
+
+/* HEADING ANIMATION */
+
+.hero h1 {
+  animation: fadeIn 1.4s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    letter-spacing: 5px;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: -5px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.about-section {
+  padding: 100px 0;
+  border-top: 1px solid #25283a;
+}
+
+.about-heading {
+  font-size: clamp(35px, 6vw, 65px);
+  font-weight: 900;
+  margin: 20px 0;
+}
+
+.about-heading span {
+  color: #ff594d;
+}
+
+.about-description {
+  color: #aaaebb;
+  max-width: 650px;
+  line-height: 2;
+  font-size: 15px;
+}
+
+.about-details {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 45px;
+}
+
+.about-details h3 {
+  color: #ff594d;
+  font-size: 35px;
+}
+
+.about-details p {
+  color: #aaaebb;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+  /* SKILLS SECTION */
+
+.skills-section {
+  padding: 100px 0;
+  border-top: 1px solid #25283a;
+}
+
+.skills-heading {
+  font-size: clamp(38px, 6vw, 65px);
+  font-weight: 900;
+  margin: 20px 0;
+}
+
+.skills-heading span {
+  color: #ff594d;
+}
+
+.skills-description {
+  color: #aaaebb;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* SKILLS GRID */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* SKILL CARDS */
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 89, 77, 0.25);
+  border-radius: 15px;
+  padding: 28px 22px;
+  transition: 0.35s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  border-color: #ff594d;
+  box-shadow: 0 12px 35px rgba(255, 89, 77, 0.12);
+}
+
+/* SKILL ICON */
+
+.skill-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: rgba(255, 89, 77, 0.12);
+  color: #ff594d;
+  font-size: 21px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.skill-card h3 {
+  color: #ffffff;
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.skill-card p {
+  color: #aaaebb;
+  font-size: 13px;
+  line-height: 1.8;
+  min-height: 47px;
+}
+
+.skill-level {
+  display: inline-block;
+  margin-top: 18px;
+  color: #ff8178;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 800px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-section {
+    padding: 65px 0;
+  }
+}
+  /* PROJECTS SECTION */
+
+.projects-section {
+    padding: 100px 0;
+    border-bottom: 1px solid #25283a;
+}
+
+.section-tag {
+    color: #ff594d;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.projects-heading {
+    font-size: clamp(35px, 6vw, 65px);
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.projects-heading span {
+    color: #ff594d;
+}
+
+.projects-intro {
+    color: #aaaebb;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 15px;
+    padding: 30px;
+    transition: 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: #ff594d;
+    box-shadow: 0 10px 30px rgba(255,89,77,0.15);
+}
+
+.project-icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.project-card h3 {
+    color: white;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: #aaaebb;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.project-tech {
+    display: inline-block;
+    color: #ff8178;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid #ff594d;
+    padding: 7px 12px;
+    border-radius: 20px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 650px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-section {
+        padding: 65px 0;
+    }
+}
+.footer {
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 40px;
+    color: #aaa;
+    font-size: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+ @media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .profile-card {
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+}
+ .contact {
+    text-align: center;
+    padding: 80px 20px;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+.contact h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.contact p {
+    color: #b8b8c8;
+    font-size: 17px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact .project-link {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.contact .project-link:hover {
+    transform: translateY(-4px);
+}
+ </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <nav>
+      <div class="logo">DEV.YADAV®</div>
+
+      <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="#projects">WORK</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <p class="tag">WELCOME TO MY DIGITAL WORLD</p>
+
+        <h1>
+          MY<br>
+          <span class="outline">PORTFOLIO.</span>
+        </h1>
+
+        <h2 class="name">DEV YADAV</h2>
+
+        <p class="description">
+          Hello! I'm Dev Yadav, an aspiring web developer
+          passionate about technology, creativity and
+          building beautiful digital experiences.
+          Welcome to my personal portfolio.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn primary">
+            EXPLORE MY WORK ↗
+          </a>
+
+          <a href="#about" class="btn secondary">
+            ABOUT ME
+          </a>
+        </div>
+
+      </div>
+
+      <div class="profile-card">
+
+        <span class="card-label">01 / INTRODUCTION</span>
+
+              <img
+          src="images/dev.jpg"
+      alt="Portrait of Dev Yadav"
+       class="profile-photo"
+      >
+
+        <h2>DEV YADAV</h2>
+
+        <p>ASPIRING WEB DEVELOPER</p>
+
+      </div>
+
+    </section>
+    <!-- MY PROJECTS SECTION -->
+<section id="projects" class="projects-section">
+
+    <div class="section-tag">02 / MY WORK</div>
+
+    <h2 class="projects-heading">
+        MY <span>PROJECTS.</span>
+    </h2>
+
+    <p class="projects-intro">
+        Here are some of the creative projects
+        I have built while learning programming.
+    </p>
+
+    <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+        <div class="project-card">
+            <div class="project-icon">🎡</div>
+            <h3>Vertical stering </h3>
+            <p>
+                An interactive spinning wheel project
+                created to explore programming and
+                animation concepts.
+            </p>
+            <span class="project-tech">PYTHON</span>
+            <a href="https://github.com/devyadav4536-hue/virtual-steering-wheel"
+             target="_blank"
+            class="project-link">
+          View on GitHub ↗
+        </a>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="project-card">
+            <div class="project-icon">🕷️</div>
+            <h3>Mouse Tracking Spider</h3>
+            <p>
+                A fun interactive project where a
+                spider follows the movement of
+                the mouse cursor.
+            </p>
+            <span class="project-tech">PYTHON</span>
+            <a href="https://github.com/devyadav4536-hue/mouse-tracking-spider"
+          target="_blank"
+        class="project-link">
+      View on GitHub ↗
+      </a>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="project-card">
+            <div class="project-icon">🍉</div>
+            <h3>Fruit Ninja Game</h3>
+            <p>
+                A fruit slicing game project
+                designed to explore game logic,
+                interaction and animation.
+            </p>
+            <span class="project-tech">GAME DEVELOPMENT</span>
+        <a href="https://github.com/devyadav4536-hue/fruit-ninja-game"
+   target="_blank"
+   class="project-link">
+   View on GitHub ↗
+</a>
+          </div>
+
+        <!-- PROJECT 4 -->
+        <div class="project-card">
+            <div class="project-icon">❤️</div>
+            <h3>Python Heart Art</h3>
+            <p>
+                A creative heart-shaped design
+                generated using Python programming
+                and mathematical patterns.
+            </p>
+            <span class="project-tech">PYTHON</span>
+         <a href="https://github.com/devyadav4536-hue/python-heart-art"
+             target="_blank"
+            class="project-link">
+           View on GitHub ↗
+      </a>
+    </div>
+
+</section>
+
+    <section id="about" class="about-section">
+
+  <p class="tag">02 / ABOUT ME</p>
+
+  <h2 class="about-heading">
+    GET TO <span>KNOW ME.</span>
+  </h2>
+
+  <p class="about-description">
+    I'm Dev Yadav, an aspiring web developer
+    interested in creating modern, creative and
+    interactive websites.
+
+    I enjoy learning new technologies, exploring
+    design ideas and turning concepts into
+    real digital experiences.
+
+    This portfolio represents my learning journey
+    and the projects I create along the way.
+  </p>
+
+  <div class="about-details">
+    <div>
+      <h3>01</h3>
+      <p>CREATIVITY</p>
+    </div>
+
+    <div>
+      <h3>02</h3>
+      <p>LEARNING</p>
+    </div>
+
+    <div>
+      <h3>03</h3>
+      <p>DEVELOPMENT</p>
+    </div>
+  </div>
+
+</section>
+<!-- SKILLS SECTION -->
+
+<section id="skills" class="skills-section">
+
+  <p class="tag">03 / MY EXPERTISE</p>
+
+  <h2 class="skills-heading">
+    MY <span>SKILLS.</span>
+  </h2>
+
+  <p class="skills-description">
+    Technologies and fields I'm exploring
+    as I grow into a web developer.
+  </p>
+
+  <div class="skills-grid">
+
+    <!-- PYTHON -->
+    <div class="skill-card">
+      <div class="skill-icon">Py</div>
+      <h3>Python</h3>
+      <p>Learning programming and problem solving.</p>
+      <span class="skill-level">CURRENTLY LEARNING</span>
+    </div>
+
+    <!-- JAVA -->
+    <div class="skill-card">
+      <div class="skill-icon">J</div>
+      <h3>Java</h3>
+      <p>Exploring object-oriented programming.</p>
+      <span class="skill-level">CURRENTLY LEARNING</span>
+    </div>
+
+    <!-- GIT AND GITHUB -->
+    <div class="skill-card">
+      <div class="skill-icon">GH</div>
+      <h3>Git & GitHub</h3>
+      <p>Learning version control and project management.</p>
+      <span class="skill-level">CURRENTLY LEARNING</span>
+    </div>
+
+    <!-- CYBERSECURITY -->
+    <div class="skill-card">
+      <div class="skill-icon">CS</div>
+      <h3>Cybersecurity</h3>
+      <p>Exploring digital security and online safety.</p>
+      <span class="skill-level">AREA OF INTEREST</span>
+    </div>
+
+    <!-- ETHICAL HACKING -->
+    <div class="skill-card">
+      <div class="skill-icon">EH</div>
+      <h3>Ethical Hacking</h3>
+      <p>Learning security concepts and responsible testing.</p>
+      <span class="skill-level">AREA OF INTEREST</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- END SKILLS SECTION -->    
+<section id="contact" class="contact">
+    <h2>Let's Connect</h2>
+    <p>Have a project idea or want to connect? Feel free to reach out!</p>
+
+    <a href="https://mail.google.com/mail/?view=cm&to=devyadav4536@gmail.com"
+   target="_blank"
+   class="project-link">
+    Email Me
+</a>
+
+    <a href="https://github.com/devyadav4536-hue"
+       target="_blank" class="project-link">
+        GitHub Profile
+    </a>
+</section>
+<footer class="bottom-line">
+      <span>© 2026 DEV YADAV</span>
+      <span>DESIGNED WITH PASSION.</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
