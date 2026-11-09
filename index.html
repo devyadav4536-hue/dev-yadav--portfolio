@@ -680,12 +680,355 @@ nav a:hover {
 .contact .project-link:hover {
     transform: translateY(-4px);
 }
- </style>
+/* ===== PORTFOLIO ANIMATIONS ===== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px #ff594d40;
+    }
+    50% {
+        box-shadow: 0 0 30px #ff594d90;
+    }
+}
+
+/* Introduction animation */
+.hero-content {
+    animation: fadeUp 1s ease both;
+}
+
+/* Profile card animation */
+.profile-card {
+    animation:
+        fadeUp 1.2s ease both,
+        glowPulse 3s ease-in-out infinite;
+}
+
+/* Project card hover animation */
+.project-card {
+    transition: transform 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px #ff594d35;
+}
+
+/* Button hover animation */
+.project-link {
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px #ff594d70;
+}
+/* SCROLL REVEAL ANIMATION */
+
+.project-card.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.7s ease,
+                transform 0.7s ease;
+}
+
+.project-card.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* HEADING ANIMATIONS */
+
+h2 {
+    transition: color 0.3s ease,
+                text-shadow 0.3s ease;
+}
+
+h2:hover {
+    color: #ff594d;
+    text-shadow: 0 0 15px #ff594d70;
+}
+
+/* NAVIGATION ANIMATIONS */
+
+nav a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #ff594d;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff594d;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+/* ANIMATED BACKGROUND */
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background: linear-gradient(
+        -45deg,
+        #090914,
+        #151026,
+        #200d18,
+        #090914
+    );
+
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+}
+/* LOADING SCREEN */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #090914;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.7s ease,
+                visibility 0.7s ease;
+}
+
+#loader h1 {
+    color: #ff594d;
+    letter-spacing: 5px;
+    font-size: 35px;
+}
+
+#loader p {
+    color: #aaa;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.loader-line {
+    width: 160px;
+    height: 3px;
+    background: #333;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader-line::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #ff594d;
+    animation: loading 1s infinite ease-in-out;
+}
+
+@keyframes loading {
+    from { left: -50%; }
+    to { left: 100%; }
+}
+
+#loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+/* TYPING ANIMATION */
+
+.role-line {
+    margin-top: 18px;
+    color: #aaaebb;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#typing-role {
+    color: #ff594d;
+}
+
+.cursor {
+    color: #ff594d;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+/* FLOATING BACKGROUND PARTICLES */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#particles span {
+    position: absolute;
+    bottom: -15px;
+    width: 5px;
+    height: 5px;
+    background: #ff594d;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 12px #ff594d;
+    animation: particleFloat linear infinite;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+/* FINAL MOBILE RESPONSIVENESS */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 92%;
+    }
+
+    nav {
+        height: auto;
+        padding: 20px 0;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 55px 0;
+        gap: 40px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 12vw, 75px);
+        letter-spacing: -3px;
+    }
+
+    .profile-card {
+        width: 100%;
+        max-width: 350px;
+        align-self: center;
+    }
+
+    .about-details {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .tag {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+    .contact h2 {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
 
 <body>
+  <div id="loader">
+    <h1>DEV YADAV</h1>
+    <div class="loader-line"></div>
+    <p>WELCOME TO MY PORTFOLIO</p>
+</div>
 
-  <div class="container">
+<div id="particles"></div>  
+<div class="container">
 
     <nav>
       <div class="logo">DEV.YADAV®</div>
@@ -711,7 +1054,9 @@ nav a:hover {
         </h1>
 
         <h2 class="name">DEV YADAV</h2>
-
+<p class="role-line">
+    I'M A <span id="typing-role"></span><span class="cursor">|</span>
+</p>
         <p class="description">
           Hello! I'm Dev Yadav, an aspiring web developer
           passionate about technology, creativity and
@@ -957,5 +1302,96 @@ nav a:hover {
 
   </div>
 
+<script>
+const projectCards = document.querySelectorAll(".project-card");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+projectCards.forEach((card) => {
+    card.classList.add("reveal-on-scroll");
+    observer.observe(card);
+});
+</script>
+<script>
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        document.getElementById("loader").classList.add("hide");
+    }, 1200);
+});
+</script>
+<script>
+const roles = [
+    "WEB DEVELOPER",
+    "PYTHON LEARNER",
+    "CREATIVE CODER",
+    "FRONTEND LEARNER"
+];
+
+const typingElement = document.getElementById("typing-role");
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect() {
+    const currentRole = roles[roleIndex];
+
+    if (!deleting) {
+        typingElement.textContent =
+            currentRole.substring(0, charIndex + 1);
+
+        charIndex++;
+
+        if (charIndex === currentRole.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1300);
+            return;
+        }
+    } else {
+        typingElement.textContent =
+            currentRole.substring(0, charIndex - 1);
+
+        charIndex--;
+
+        if (charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+        }
+    }
+
+    setTimeout(typeEffect, deleting ? 45 : 90);
+}
+
+typeEffect();
+</script>
+<script>
+const particleContainer = document.getElementById("particles");
+
+for (let i = 0; i < 25; i++) {
+    const particle = document.createElement("span");
+
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.animationDuration =
+        (Math.random() * 8 + 6) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+    particle.style.width =
+        particle.style.height =
+        (Math.random() * 4 + 2) + "px";
+
+    particleContainer.appendChild(particle);
+}
+</script>
 </body>
 </html>
