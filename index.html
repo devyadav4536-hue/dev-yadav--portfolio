@@ -1017,6 +1017,17 @@ body {
         font-size: 32px;
     }
 }
+/* SWARM CURSOR ANIMATION */
+#swarm-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    display: block;
+}
 </style>
 </head>
 
@@ -1111,12 +1122,12 @@ body {
 
         <!-- PROJECT 1 -->
         <div class="project-card">
-            <div class="project-icon">🎡</div>
-            <h3>Virtual  stering </h3>
+            <div class="project-icon"></div>
+            <h3>virtual-steering-wheel </h3>
             <p>
-                An interactive spinning wheel project
-                created to explore programming and
-                animation concepts.
+                An interactive python project which uses 
+                CV to deteact our heand and by analysing our 
+                heand movement it moves the car in a game 
             </p>
             <span class="project-tech">PYTHON</span>
             <a href="https://github.com/devyadav4536-hue/virtual-steering-wheel"
@@ -1128,14 +1139,14 @@ body {
 
         <!-- PROJECT 2 -->
         <div class="project-card">
-            <div class="project-icon">🕷️</div>
+            <div class="project-icon"></div>
             <h3>Mouse Tracking Spider</h3>
             <p>
                 A fun interactive project where a
                 spider follows the movement of
                 the mouse cursor.
             </p>
-            <span class="project-tech">PYTHON</span>
+            <span class="project-tech">HTML and CSS</span>
             <a href="https://github.com/devyadav4536-hue/mouse-tracking-spider"
           target="_blank"
         class="project-link">
@@ -1145,7 +1156,7 @@ body {
 
         <!-- PROJECT 3 -->
         <div class="project-card">
-            <div class="project-icon">🍉</div>
+            <div class="project-icon"></div>
             <h3>Fruit Ninja Game</h3>
             <p>
                 A fruit slicing game project
@@ -1162,7 +1173,7 @@ body {
 
         <!-- PROJECT 4 -->
         <div class="project-card">
-            <div class="project-icon">❤️</div>
+            <div class="project-icon"></div>
             <h3>Python Heart Art</h3>
             <p>
                 A creative heart-shaped design
@@ -1392,6 +1403,109 @@ for (let i = 0; i < 25; i++) {
 
     particleContainer.appendChild(particle);
 }
+</script>
+<canvas id="swarm-canvas"></canvas>
+<script>
+const canvas = document.getElementById("swarm-canvas");
+const ctx = canvas.getContext("2d");
+
+let width, height;
+let mouse = {
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2
+};
+
+const colors = [
+    "#ffffff", "#66eaff", "#a78bfa",
+    "#ff8fab", "#b8ffca", "#ffd166"
+];
+
+const cursors = Array.from({ length: 16 }, (_, i) => ({
+    x: mouse.x,
+    y: mouse.y,
+    angle: 0,
+    color: colors[i % colors.length],
+    size: 5 + Math.random() * 2,
+    offset: (Math.PI * 2 / 16) * i,
+    radius: 15 + Math.random() * 22
+}));
+
+function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+window.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+window.addEventListener("touchmove", (e) => {
+    if (e.touches.length) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+    }
+}, { passive: true });
+
+function drawCursor(cursor) {
+    ctx.save();
+    ctx.translate(cursor.x, cursor.y);
+    ctx.rotate(cursor.angle);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, 15);
+    ctx.lineTo(4, 11);
+    ctx.lineTo(7, 18);
+    ctx.lineTo(10, 16);
+    ctx.lineTo(7, 9);
+    ctx.lineTo(13, 9);
+    ctx.closePath();
+
+    ctx.fillStyle = cursor.color;
+    ctx.shadowColor = cursor.color;
+    ctx.shadowBlur = 8;
+    ctx.fill();
+
+    ctx.restore();
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    cursors.forEach((cursor, i) => {
+        const angle = cursor.offset + Date.now() * 0.0007;
+
+        const targetX = mouse.x + Math.cos(angle) * cursor.radius;
+        const targetY = mouse.y + Math.sin(angle) * cursor.radius;
+
+        const dx = targetX - cursor.x;
+        const dy = targetY - cursor.y;
+
+        cursor.x += dx * 0.12;
+        cursor.y += dy * 0.12;
+
+        if (Math.abs(dx) + Math.abs(dy) > 0.2) {
+            cursor.angle = Math.atan2(dy, dx) + Math.PI / 2;
+        }
+
+        drawCursor(cursor);
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 </body>
 </html>
